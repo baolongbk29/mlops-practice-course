@@ -1,2 +1,3 @@
-# mlops-practice-course
-MLOps Crash Course
+# MLOPS PRACTICE CRASH COURSE
+## Architecture
+![Alt text](images/image.png)
