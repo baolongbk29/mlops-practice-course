@@ -1,4 +1,4 @@
-FROM python:3.9-slim AS build
+FROM python:3.11-slim-buster AS build
 
 RUN apt-get update
 RUN python -m venv /opt/venv
@@ -7,10 +7,11 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY deployment/requirements.txt .
 RUN pip install -r requirements.txt
 
-FROM python:3.9-slim
+FROM python:3.11-slim-buster
 
 RUN apt-get update && \
-  apt-get install -y default-jre && \
+ 	# Install OpenJDK 11
+  apt-get install -y openjdk-11-jdk && \
   apt-get autoremove -yqq --purge && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*

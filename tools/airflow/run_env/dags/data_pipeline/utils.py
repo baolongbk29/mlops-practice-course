@@ -5,7 +5,7 @@ from docker.types import Mount
 
 
 class AppConst:
-    DOCKER_USER = Variable.get("DOCKER_USER", "mlopsvn")
+    DOCKER_USER = Variable.get("DOCKER_USER", "longlam071")
 
 
 class AppPath:
@@ -16,24 +16,24 @@ class AppPath:
 
 class DefaultConfig:
     DEFAULT_DAG_ARGS = {
-        "owner": "mlopsvn",
+        "owner": "longlam071",
         "retries": 0,
         "retry_delay": pendulum.duration(seconds=20),
     }
 
     DEFAULT_DOCKER_OPERATOR_ARGS = {
-        "image": f"{AppConst.DOCKER_USER}/mlops_crash_course/data_pipeline:latest",
+        "image": f"{AppConst.DOCKER_USER}/data_pipeline:latest",
         "api_version": "auto",
         "auto_remove": True,
         "mounts": [
             # feature repo
             Mount(
-                source=AppPath.FEATURE_REPO.absolute().as_posix(),
+                source="/d/Main/mlops-practice-course/data_pipeline/feature_repo",
                 target="/data_pipeline/feature_repo",
                 type="bind",
             ),
         ],
         # Fix a permission denied when using DockerOperator in Airflow
         # Ref: https://stackoverflow.com/a/70100729
-        # "docker_url": "tcp://docker-proxy:2375",
+        "docker_url": "tcp://docker-proxy:2375",
     }
