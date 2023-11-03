@@ -5,7 +5,7 @@ from docker.types import Mount
 
 
 class AppConst:
-    DOCKER_USER = Variable.get("DOCKER_USER", "mlopsvn")
+    DOCKER_USER = Variable.get("DOCKER_USER", "longlam071")
 
 
 class AppPath:
@@ -16,7 +16,7 @@ class AppPath:
 
 class DefaultConfig:
     DEFAULT_DAG_ARGS = {
-        "owner": "mlopsvn",
+        "owner": "longlam071",
         "retries": 0,
         "retry_delay": pendulum.duration(seconds=20),
     }
