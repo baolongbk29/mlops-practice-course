@@ -132,4 +132,8 @@ dmypy.json
 .vscode
 bin
 tmp
-./tools/mlflow/run_env/data/*
+./tools/*/run_env/data/
+./tools/*/run_env/*
+tools/mlflow/run_env/*
+training_pipeline/artifacts/*.json
+training_pipeline/feature_repo/registry/*.db
