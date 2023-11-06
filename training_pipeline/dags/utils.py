@@ -26,23 +26,24 @@ class DefaultConfig:
     }
 
     DEFAULT_DOCKER_OPERATOR_ARGS = {
-        "image": f"{AppConst.DOCKER_USER}/training_pipeline:latest",
+        "image": "longlam071/training_pipeline:latest",
         "api_version": "auto",
         "auto_remove": True,
-        "network_mode": "bridge",
-        "docker_url": "tcp://docker-proxy:2375",
         "mounts": [
             # feature repo
             Mount(
-                source=AppPath.FEATURE_REPO.absolute().as_posix(),
+                source="/d/Main/mlops-practice-course/training_pipeline/feature_repo",
                 target="/training_pipeline/feature_repo",
                 type="bind",
             ),
-            # artifacts
+
             Mount(
-                source=AppPath.ARTIFACTS.absolute().as_posix(),
+                source="/d/Main/mlops-practice-course/training_pipeline/artifacts",
                 target="/training_pipeline/artifacts",
                 type="bind",
             ),
         ],
+        # Fix a permission denied when using DockerOperator in Airflow
+        # Ref: https://stackoverflow.com/a/70100729
+        "docker_url": "tcp://docker-proxy:2375",
     }
