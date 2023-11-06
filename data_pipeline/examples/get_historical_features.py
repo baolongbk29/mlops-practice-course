@@ -1,6 +1,7 @@
-from feast import FeatureStore
-import pandas as pd
 from datetime import datetime
+
+import pandas as pd
+from feast import FeatureStore
 
 store = FeatureStore(repo_path="../feature_repo")
 
@@ -15,6 +16,7 @@ entity_df = pd.DataFrame.from_dict(
     }
 )
 training_df = store.get_historical_features(
-    entity_df=entity_df, features=["driver_stats:acc_rate", "driver_stats:conv_rate"],
+    entity_df=entity_df,
+    features=["driver_stats:acc_rate", "driver_stats:conv_rate"],
 ).to_df()
 print(training_df.head())

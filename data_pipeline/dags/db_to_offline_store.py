@@ -1,14 +1,12 @@
-import sys
 import os
+import sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
 import pendulum
-
 from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
-
 from utils import *
 
 with DAG(

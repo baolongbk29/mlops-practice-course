@@ -1,12 +1,11 @@
 from datetime import timedelta
 
+from data_sources import driver_stats_batch_source, driver_stats_stream_source
+from entities import driver
 from feast import FeatureView, Field
 from feast.stream_feature_view import stream_feature_view
 from feast.types import Float32, Int32
 from pyspark.sql import DataFrame
-
-from data_sources import driver_stats_batch_source, driver_stats_stream_source
-from entities import driver
 
 driver_stats_view = FeatureView(
     name="driver_stats",

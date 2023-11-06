@@ -1,6 +1,7 @@
 import logging
 import sys
 
+
 # logging initialization
 def get_logger():
     logger = logging.getLogger(__name__)

@@ -1,6 +1,5 @@
 import feast
 import pandas as pd
-
 from utils import *
 
 Log(AppConst.DATA_EXTRACTION)

@@ -1,6 +1,7 @@
-from processor import processor
 import argparse
+
 from feast.data_source import PushMode
+from processor import processor
 
 
 def main(args):

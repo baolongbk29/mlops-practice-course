@@ -114,7 +114,7 @@ class Log:
     log: logging.Logger = None
 
     def __init__(self, name="") -> None:
-        if Log.log == None:
+        if Log.log is None:
             Log.log = self._init_logger(name)
 
     def _init_logger(self, name):
