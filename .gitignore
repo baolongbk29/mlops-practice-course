@@ -137,3 +137,9 @@ tmp
 tools/mlflow/run_env/*
 training_pipeline/artifacts/*.json
 training_pipeline/feature_repo/registry/*.db
+
+
+airflow/.env
+tools/*/run_env
+.vscode
+bin
