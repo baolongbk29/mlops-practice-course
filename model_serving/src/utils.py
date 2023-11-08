@@ -30,8 +30,8 @@ class AppPath:
     BATCH_INPUT_PQ = ARTIFACTS / "batch_input.parquet"
     BATCH_OUTPUT_PQ = ARTIFACTS / "batch_output.parquet"
 
-    def __init__(self) -> None:
-        AppPath.ARTIFACTS.mkdir(parents=True, exist_ok=True)
+    # def __init__(self) -> None:
+    #     AppPath.ARTIFACTS.mkdir(parents=True, exist_ok=True)
 
 
 class Config:
