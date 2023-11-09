@@ -12,20 +12,20 @@ volumes:
 services:
   node-exporter:
     privileged: true
-    image: prom/node-exporter:latest
+    image: prom/node-exporter
     container_name: node-exporter
-    restart: unless-stopped
+    restart: always
+    ports:
+      - "9100:9100"
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
     command:
-      - '--path.procfs=/host/proc'
-      - '--path.rootfs=/rootfs'
-      - '--path.sysfs=/host/sys'
-      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
-    ports:
-      - 9100:9100
+      - "--path.procfs=/host/proc"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.ignored-mount-points"
+      - "^/(rootfs/)?(dev|etc|host|proc|run|sys|volume1)($$|/)"
 
   prometheus:
     image: prom/prometheus:v2.38.0
